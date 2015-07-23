@@ -1,0 +1,30 @@
+{
+  "name": "b1systems-x2go",
+  "version": "0.1.0",
+  "author": "Mattias Giese",
+  "summary": "Simple module to manage x2go server/client",
+  "license": "GPL2",
+  "source": "https://github.com/b1-systems/puppet-x2go",
+  "project_page": "https://github.com/b1-systems/puppet-x2go",
+  "issues_url": "https://github.com/b1-systems/puppet-x2go/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "15.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ]
+}
