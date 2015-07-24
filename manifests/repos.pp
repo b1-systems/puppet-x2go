@@ -48,6 +48,7 @@ class x2go::repos(
     }
   }
   if $::operatingsystem == 'Ubuntu' {
+    include ::apt
     apt::ppa{$ubuntu_ppa:
       ensure         => $ensure,
       package_manage => true,
