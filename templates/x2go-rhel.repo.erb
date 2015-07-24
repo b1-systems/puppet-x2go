@@ -2,7 +2,7 @@
 name=Upstream X2Go Packages (release builds)
 baseurl=http://packages.x2go.org/epel/$releasever/main/$basearch
 gpgcheck=1
-gpgkey=<%= @x2go_repo_gpgkey %>
+gpgkey=<%= @el_repo_gpgkey %>
 enabled=1
 protect=0
 
@@ -11,7 +11,7 @@ protect=0
 name=Upstream X2Go Packages (nightly builds)
 baseurl=http://packages.x2go.org/epel/$releasever/heuler/$basearch
 gpgcheck=1
-gpgkey=<%= @x2go_repo_gpgkey %>
+gpgkey=<%= @el_repo_gpgkey %>
 enabled=1
 protect=0
 <% end if -%>
@@ -21,7 +21,7 @@ protect=0
 name=Upstream X2Go Packages (extra packages)
 baseurl=http://packages.x2go.org/epel/$releasever/extras/$basearch
 gpgcheck=1
-gpgkey=<%= @x2go_repo_gpgkey %>
+gpgkey=<%= @el_repo_gpgkey %>
 enabled=1
 protect=0
 <% end if -%>

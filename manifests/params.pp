@@ -4,14 +4,13 @@
 # It sets variables according to platform.
 #
 class x2go::params {
+  $client_packages = ['x2goclient',]
   case $::osfamily {
-    'Ubuntu': {
-      $package_name = 'x2go'
-      $service_name = 'x2go'
+    'Debian': {
+      $server_packages = [ 'x2goserver', 'x2goserver-xsession' ]
     }
-    'CentOS': {
-      $package_name = 'x2go'
-      $service_name = 'x2go'
+    'RedHat': {
+      $server_packages = [ 'x2goserver', 'x2goserver-xsession' ]
     }
     default: {
       fail("${::operatingsystem} not supported")

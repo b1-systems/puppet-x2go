@@ -14,22 +14,34 @@
 #   This needs apt/epel modules
 #   Valid values: true, false
 #   Default: true
-# [*latest_release*]
+# [*upstream_repos*]
 #   Should we configure repos so that the latest release is available on the system?
 #   Used with manage_repos. 
 #
 class x2go (
-  $ensure         = 'present',
-  $manage_repos   = true,
-  $latest_release = false,
-  $package_name   = $::x2go::params::package_name,
-  $service_name   = $::x2go::params::service_name,
+  $ensure          = 'present',
+  $server          = true,
+  $client          = false,
+  $manage_repos    = true,
+  $upstream_repos  = false,
+  $server_packages = $::x2go::params::server_packages,
+  $client_packages = $::x2go::params::client_packages
 ) inherits ::x2go::params {
 
-  # validate parameters here
+  validate_string($ensure,'^(present|absent)','ensure must be either present or absent') 
+  validate_bool($server)
+  validate_bool($client)
+  validate_bool($manage_repos)
+  validate_bool($upstream_repos)
+  validate_array($server_packages)
+  validate_array($client_packages)
 
-  class { '::x2go::install': } ->
-  class { '::x2go::config': } ~>
-  class { '::x2go::service': } ->
-  Class['::x2go']
+  class { '::x2go::install': }
+
+  if $manage_repos {
+    class { '::x2go::repos':
+      ensure => $ensure,
+    } -> Class['::x2go::install']
+  }
+  Class['::x2go::install'] -> Class['::x2go']
 }
