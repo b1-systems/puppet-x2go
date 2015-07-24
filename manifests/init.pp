@@ -40,8 +40,9 @@ class x2go (
 
   if $manage_repos {
     class { '::x2go::repos':
-      ensure => $ensure,
-    } -> Class['::x2go::install']
+      ensure  => $ensure,
+      before => Class['::x2go::install']
+    }
   }
   Class['::x2go::install'] -> Class['::x2go']
 }
