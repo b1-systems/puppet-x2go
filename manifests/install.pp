@@ -5,14 +5,10 @@
 class x2go::install {
 
   if $::x2go::client {
-    package { $::x2go::client_packages:
-      ensure => $::x2go::ensure,
-    }
+    ensure_packages($::x2go::client_packages,{ensure => $::x2go::ensure})
   }
   if $::x2go::server {
-    package { $::x2go::server_packages:
-      ensure => $::x2go::ensure,
-    }
+    ensure_packages($::x2go::server_packages,{ensure => $::x2go::ensure})
   }
 
 }
