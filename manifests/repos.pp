@@ -49,8 +49,9 @@ class x2go::repos(
   }
   if $::operatingsystem == 'Ubuntu' {
     apt::ppa{$ubuntu_ppa:
-      ensure          => $ensure,
-      package_manage  => true,
+      ensure         => $ensure,
+      package_manage => true,
+      release        => $::lsbdistcodename,
     }
   }
 }
